@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gee Gee Designs · Tlokweng, Botswana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --mg:#E0417A; --or:#F4832A; --yw:#F9C932;
+  --tl:#1BBFA0; --in:#4F3FC0; --sk:#3AB4E8;
+  --cr:#FFF8F0; --dk:#1A0E2E; --wm:#FFF3E6;
+  --rd:#e53e3e; --gn:#38a169;
+
+  /* Brand vars — overridden by admin */
+  --brand-primary: #E0417A;
+  --brand-secondary: #F4832A;
+  --brand-accent: #F9C932;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--dk);overflow-x:hidden;}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(255,248,240,.95);backdrop-filter:blur(16px);border-bottom:2px solid var(--brand-accent);transition:border-color .3s;}
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--dk);}
+#navLogoImg{width:44px;height:44px;border-radius:10px;object-fit:cover;display:none;}
+#navLogoText{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:900;}
+#navLogoText .s1{color:var(--brand-primary);}
+#navLogoText .s2{color:var(--brand-secondary);font-style:italic;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--dk);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--brand-primary);}
+.nav-r{display:flex;gap:10px;align-items:center;}
+.nav-book-btn{background:var(--brand-primary);color:#fff;padding:10px 22px;border-radius:999px;font-weight:600;font-size:.8rem;text-decoration:none;transition:all .3s;}
+.nav-book-btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.nav-admin-btn{background:var(--dk);color:var(--yw);padding:9px 16px;border-radius:999px;font-weight:600;font-size:.78rem;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .2s;}
+.nav-admin-btn:hover{opacity:.85;}
+
+/* Social bar under nav */
+#socialBar{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 48px;background:var(--dk);transition:all .3s;}
+#socialBar a{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.75rem;text-decoration:none;transition:color .2s;padding:3px 8px;border-radius:6px;}
+#socialBar a:hover{color:var(--yw);}
+#socialBar a .si{font-size:1rem;}
+#socialBar.hidden{display:none;}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{min-height:100vh;background:linear-gradient(135deg,#FFF8F0,#FFF0FB 50%,#EEF9FF);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 48px 80px;position:relative;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.2;pointer-events:none;animation:bf 8s ease-in-out infinite;}
+.b1{width:500px;height:500px;background:var(--brand-primary);top:-150px;right:-100px;}
+.b2{width:350px;height:350px;background:var(--brand-accent);bottom:-80px;left:50px;animation-delay:3s;}
+.b3{width:280px;height:280px;background:var(--tl);top:40%;left:-80px;animation-delay:6s;}
+@keyframes bf{0%,100%{transform:translateY(0)scale(1);}50%{transform:translateY(-28px)scale(1.06);}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--brand-accent);color:var(--dk);padding:7px 20px;border-radius:999px;font-size:.78rem;font-weight:600;margin-bottom:28px;animation:sdn .6s .2s both;}
+/* Hero logo display */
+#heroLogoImg{width:90px;height:90px;border-radius:20px;object-fit:cover;margin:0 auto 20px;display:none;box-shadow:0 8px 32px rgba(0,0,0,.15);}
+h1.ht{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,7rem);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:24px;animation:sdn .7s .4s both;}
+h1.ht .l2{color:var(--brand-primary);font-style:italic;display:block;}
+h1.ht .l3{color:var(--tl);display:block;}
+.hd{font-size:1.1rem;line-height:1.8;color:#5a4060;max-width:520px;margin:0 auto 40px;animation:sdn .7s .6s both;}
+.hero-acts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:sdn .7s .8s both;}
+.btn-m{background:var(--brand-primary);color:#fff;padding:15px 36px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;box-shadow:0 8px 28px rgba(224,65,122,.35);transition:all .3s;}
+.btn-m:hover{filter:brightness(1.1);transform:translateY(-2px);}
+.btn-g{color:var(--dk);font-weight:600;font-size:.88rem;text-decoration:none;border-bottom:2px solid var(--brand-accent);padding-bottom:2px;}
+.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:56px;animation:sdn .7s 1s both;}
+.sn{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--brand-primary);}
+.sl{font-size:.75rem;color:#8a70a0;margin-top:2px;}
+@keyframes sdn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══════════════════════════════════════════
+   MARQUEE
+═══════════════════════════════════════════ */
+.mq{background:var(--dk);padding:13px 0;overflow:hidden;white-space:nowrap;}
+.mq-in{display:inline-flex;animation:mq 22s linear infinite;}
+.mq-in:hover{animation-play-state:paused;}
+.mi{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:0 28px;color:var(--brand-accent);display:inline-flex;align-items:center;gap:18px;}
+.mi span{width:5px;height:5px;background:var(--brand-primary);border-radius:50%;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ═══════════════════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════════════════ */
+.sec{padding:96px 64px;}
+.ey{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.ey::before{content:'';width:24px;height:3px;border-radius:2px;display:block;background:var(--brand-primary);}
+.st{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:16px;}
+.st em{font-style:italic;}
+
+/* ═══════════════════════════════════════════
+   CATALOGUE / GALLERY
+═══════════════════════════════════════════ */
+#catalogue{background:var(--wm);}
+.cat-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px;}
+.cat-desc{font-size:1rem;color:#6a5070;line-height:1.8;margin-top:8px;max-width:480px;}
+
+/* Collection filter tabs */
+.coll-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.coll-tab{padding:9px 22px;border-radius:999px;font-size:.82rem;font-weight:600;border:2px solid transparent;cursor:pointer;transition:all .2s;background:#fff;color:#5a4060;border-color:#e0d8e8;}
+.coll-tab.active{background:var(--brand-primary);color:#fff;border-color:var(--brand-primary);}
+.coll-tab:hover:not(.active){border-color:var(--brand-primary);color:var(--brand-primary);}
+
+/* Collection group */
+.coll-group{margin-bottom:64px;animation:sdn .5s ease both;}
+.coll-group-header{display:flex;align-items:center;gap:20px;margin-bottom:24px;}
+.coll-group-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px 6px 10px;border-radius:999px;font-size:.82rem;font-weight:700;}
+.coll-group-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;}
+.coll-group-desc{font-size:.9rem;color:#8a70a0;margin-left:auto;}
+.coll-group-line{flex:1;height:1px;background:linear-gradient(to right,rgba(0,0,0,.08),transparent);}
+
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px;}
+.empty-state{grid-column:1/-1;text-align:center;padding:72px 40px;background:#fff;border-radius:20px;border:2px dashed #ddd;}
+.empty-state .ei{font-size:3.5rem;margin-bottom:14px;}
+.empty-state h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:8px;}
+.empty-state p{color:#8a70a0;font-size:.88rem;}
+
+/* Design card */
+.dcard{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .35s,box-shadow .35s;position:relative;cursor:pointer;}
+.dcard:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,.15);}
+.dcard-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.dcard-ph{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,#ffe0ed,#fff0fb);}
+.dcard-body{padding:14px 16px 18px;}
+.dcard-tag{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:7px;}
+.dcard-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:5px;}
+.dcard-price{font-size:.9rem;font-weight:700;color:var(--brand-primary);}
+.dcard-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(26,14,46,.82)100%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:18px;}
+.dcard:hover .dcard-ov{opacity:1;}
+.dcard-ov-cta{color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;}
+/* Admin controls */
+.dcard-adm{position:absolute;top:10px;right:10px;display:none;gap:6px;}
+.admin-mode .dcard-adm{display:flex;}
+.dab{width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.dab:hover{transform:scale(1.1);}
+.dab-edit{background:var(--or);color:#fff;}
+.dab-del{background:var(--rd);color:#fff;}
+
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+#services{background:var(--cr);}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+.sv-card{border-radius:20px;padding:36px 28px;position:relative;overflow:hidden;transition:transform .3s;}
+.sv-card:hover{transform:translateY(-6px);}
+.svc1{background:linear-gradient(135deg,#FFF0FB,#FFD6EC);}
+.svc2{background:linear-gradient(135deg,#FFF8E0,#FFE89A);}
+.svc3{background:linear-gradient(135deg,#E0FBF5,#B2F0E4);}
+.svc4{background:linear-gradient(135deg,#EEF0FF,#D4D8FF);}
+.svc5{background:linear-gradient(135deg,#FFF3E8,#FFD9BB);}
+.svc6{background:linear-gradient(135deg,#E8F8FF,#B8E8FF);}
+.sv-em{font-size:2.2rem;margin-bottom:16px;display:block;}
+.sv-n{position:absolute;top:16px;right:20px;font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;opacity:.06;color:var(--dk);}
+.sv-t{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:9px;}
+.sv-d{font-size:.87rem;line-height:1.75;color:#5a4060;}
+.sv-p{margin-top:16px;font-weight:700;font-size:.83rem;color:var(--brand-primary);}
+
+/* ═══════════════════════════════════════════
+   PROCESS
+═══════════════════════════════════════════ */
+#process{background:var(--dk);color:#fff;}
+#process .st{color:#fff;}
+.ps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;position:relative;}
+.ps-grid::before{content:'';position:absolute;top:56px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--brand-primary),var(--or),var(--brand-accent),var(--tl));}
+.ps{text-align:center;padding:0 18px;}
+.ps-c{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 22px;position:relative;z-index:2;box-shadow:0 8px 30px rgba(0,0,0,.3);}
+.pc1{background:linear-gradient(135deg,var(--brand-primary),var(--or));}
+.pc2{background:linear-gradient(135deg,var(--or),var(--brand-accent));}
+.pc3{background:linear-gradient(135deg,var(--tl),var(--sk));}
+.pc4{background:linear-gradient(135deg,var(--in),var(--brand-primary));}
+.ps-num{font-size:.62rem;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-bottom:7px;}
+.ps-t{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:6px;}
+.ps-d{font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.45);}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════ */
+#testimonials{background:linear-gradient(135deg,#FFF0FB,#FFF8F0 50%,#F0FFFC);}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+.tc{background:#fff;border-radius:18px;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.05);border-top:4px solid;transition:transform .3s;}
+.tc:hover{transform:translateY(-5px);}
+.tc1{border-color:var(--brand-primary);}
+.tc2{border-color:var(--tl);}
+.tc3{border-color:var(--or);}
+.tc-stars{color:var(--yw);font-size:1rem;letter-spacing:2px;margin-bottom:14px;}
+.tc-txt{font-size:.98rem;line-height:1.8;color:#3a2050;font-style:italic;margin-bottom:20px;}
+.tc-auth{display:flex;align-items:center;gap:12px;}
+.ta-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:#fff;}
+.av1{background:linear-gradient(135deg,var(--brand-primary),var(--or));}
+.av2{background:linear-gradient(135deg,var(--tl),var(--sk));}
+.av3{background:linear-gradient(135deg,var(--in),var(--brand-primary));}
+.ta-nm{font-weight:700;font-size:.83rem;}
+.ta-lc{font-size:.73rem;color:#8a70a0;margin-top:2px;}
+
+/* ═══════════════════════════════════════════
+   BOOKING
+═══════════════════════════════════════════ */
+#booking{background:var(--cr);}
+.bk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.bk-desc{font-size:1rem;line-height:1.8;color:#5a4060;margin-top:12px;max-width:420px;}
+.cc-list{display:flex;flex-direction:column;gap:13px;margin-top:30px;}
+.cc{display:flex;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:15px 18px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:4px solid var(--brand-primary);transition:transform .2s;}
+.cc:hover{transform:translateX(4px);}
+.cc-ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.ci1{background:#FFE0ED;} .ci2{background:#E0FBF5;} .ci3{background:#FFF8E0;}
+.cc-tx a{color:var(--dk);text-decoration:none;font-weight:600;font-size:.9rem;}
+.cc-tx span{font-size:.73rem;color:#8a70a0;display:block;margin-bottom:2px;}
+.tt-promo{margin-top:22px;background:var(--dk);border-radius:14px;padding:20px 22px;display:flex;align-items:center;gap:14px;color:#fff;}
+.tt-promo strong{display:block;font-size:.93rem;margin-bottom:3px;}
+.tt-promo p{font-size:.8rem;opacity:.6;}
+.tt-promo a{color:var(--yw);font-weight:700;text-decoration:none;}
+.bk-form{background:#fff;border-radius:22px;padding:34px;box-shadow:0 8px 40px rgba(0,0,0,.08);}
+.bk-ft{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:22px;padding-bottom:16px;border-bottom:2px solid var(--brand-accent);}
+.fg{margin-bottom:16px;}
+.fg label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a70a0;display:block;margin-bottom:6px;}
+.fg input,.fg select,.fg textarea{width:100%;border:2px solid #ede5f0;border-radius:12px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s,box-shadow .25s;background:#fff;color:var(--dk);appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--brand-primary);box-shadow:0 0 0 3px rgba(224,65,122,.1);}
+.fg textarea{height:100px;resize:vertical;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.sbtn{width:100%;background:linear-gradient(135deg,var(--brand-primary),var(--brand-secondary));color:#fff;border:none;padding:15px;border-radius:999px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;box-shadow:0 6px 24px rgba(224,65,122,.28);transition:all .3s;margin-top:6px;}
+.sbtn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(224,65,122,.35);}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{background:var(--dk);color:#fff;padding:52px 64px 32px;}
+.ft-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:26px;flex-wrap:wrap;gap:20px;}
+.ft-logo-wrap{display:flex;align-items:center;gap:12px;}
+#footerLogoImg{width:40px;height:40px;border-radius:8px;object-fit:cover;display:none;}
+#footerLogoTxt{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;}
+#footerLogoTxt .s1{color:var(--brand-primary);}
+#footerLogoTxt .s2{color:var(--tl);font-style:italic;}
+.ft-lnks{display:flex;gap:20px;}
+.ft-lnks a{color:rgba(255,255,255,.4);font-size:.8rem;text-decoration:none;transition:color .2s;}
+.ft-lnks a:hover{color:var(--yw);}
+.ft-soc{display:flex;gap:8px;}
+.fsb{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:transform .2s;}
+.fsb:hover{transform:scale(1.1);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.ft-cp{font-size:.7rem;color:rgba(255,255,255,.28);}
+.ft-tg{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.28);font-size:.85rem;}
+
+/* ═══════════════════════════════════════════
+   ADMIN — PASSWORD MODAL
+═══════════════════════════════════════════ */
+.pw-modal{display:none;position:fixed;inset:0;background:rgba(26,14,46,.85);z-index:600;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.pw-modal.open{display:flex;}
+.pw-box{background:#fff;border-radius:24px;padding:48px 40px;width:360px;text-align:center;animation:popIn .3s ease;}
+@keyframes popIn{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:scale(1);}}
+.pw-icon{font-size:3rem;margin-bottom:14px;}
+.pw-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;margin-bottom:7px;}
+.pw-sub{color:#8a70a0;font-size:.88rem;margin-bottom:26px;}
+.pw-inp{width:100%;border:2px solid #ede5f0;border-radius:12px;padding:13px;font-size:1rem;outline:none;text-align:center;letter-spacing:.25em;margin-bottom:14px;transition:border-color .2s;}
+.pw-inp:focus{border-color:var(--mg);}
+.pw-inp.wrong{border-color:var(--rd);animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+.pw-err{color:var(--rd);font-size:.8rem;margin-bottom:12px;display:none;}
+.pw-btn{width:100%;background:linear-gradient(135deg,var(--dk),#2d1a4e);color:var(--yw);border:none;padding:14px;border-radius:12px;font-weight:700;font-size:.9rem;cursor:pointer;}
+.pw-cancel{margin-top:11px;background:none;border:none;color:#8a70a0;cursor:pointer;font-size:.83rem;}
+
+/* ═══════════════════════════════════════════
+   ADMIN — MAIN DASHBOARD (full-screen)
+═══════════════════════════════════════════ */
+.adm-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--dk);}
+.adm-overlay.open{display:flex;}
+
+/* Sidebar */
+.adm-sidebar{width:240px;flex-shrink:0;background:#120a22;display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,.08);}
+.adm-brand{padding:28px 24px 20px;border-bottom:1px solid rgba(255,255,255,.08);}
+.adm-brand-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;}
+.adm-brand-sub{font-size:.68rem;color:rgba(255,255,255,.35);margin-top:2px;letter-spacing:.1em;text-transform:uppercase;}
+.adm-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;}
+.adm-nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.45);font-size:.85rem;font-weight:500;border:none;background:none;text-align:left;width:100%;}
+.adm-nav-item:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);}
+.adm-nav-item.active{background:linear-gradient(135deg,rgba(224,65,122,.25),rgba(244,131,42,.15));color:#fff;font-weight:700;}
+.adm-nav-item .ni{font-size:1.1rem;width:22px;text-align:center;}
+.adm-nav-item .nb{margin-left:auto;background:var(--mg);color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:999px;display:none;}
+.adm-nav-item .nb.show{display:block;}
+.adm-footer{padding:16px 12px;border-top:1px solid rgba(255,255,255,.08);}
+.adm-exit-btn{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);padding:10px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.adm-exit-btn:hover{background:rgba(255,255,255,.12);color:#fff;}
+
+/* Main content */
+.adm-main{flex:1;overflow-y:auto;background:#f7f4fc;}
+.adm-topbar{background:#fff;border-bottom:1px solid #e8e0f0;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
+.adm-topbar-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--dk);}
+.adm-topbar-sub{font-size:.78rem;color:#8a70a0;margin-top:2px;}
+.adm-save-btn{background:linear-gradient(135deg,var(--gn),#2fb55e);color:#fff;border:none;padding:10px 24px;border-radius:999px;font-weight:700;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:opacity .2s;}
+.adm-save-btn:hover{opacity:.88;}
+
+/* Tab panels */
+.adm-tab{display:none;padding:32px;}
+.adm-tab.active{display:block;}
+
+/* ── Cards / widgets in admin ── */
+.adm-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.adm-card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;color:var(--dk);padding-bottom:14px;border-bottom:2px solid #f0e8f8;}
+.adm-card-title .ct-icon{font-size:1.2rem;}
+
+/* Form fields */
+.af{margin-bottom:16px;}
+.af label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a70a0;display:block;margin-bottom:7px;}
+.af input,.af select,.af textarea{width:100%;border:2px solid #ede5f0;border-radius:10px;padding:11px 13px;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;background:#fff;color:var(--dk);appearance:none;}
+.af input:focus,.af select:focus,.af textarea:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(224,65,122,.08);}
+.af textarea{height:80px;resize:vertical;}
+.af-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.af-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+
+/* Upload zone */
+.uz{border:2px dashed #ddd;border-radius:14px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .3s;background:#fafafa;position:relative;overflow:hidden;}
+.uz:hover,.uz.drag{border-color:var(--mg);background:#fff0fb;}
+.uz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.uz-icon{font-size:2.2rem;margin-bottom:8px;}
+.uz-txt{font-size:.85rem;color:#6a5070;line-height:1.5;}
+.uz-txt strong{color:var(--mg);}
+.uz-preview{width:100%;border-radius:10px;max-height:160px;object-fit:cover;display:none;margin-top:14px;}
+.uz-preview.show{display:block;}
+
+/* Color pickers */
+.color-row{display:flex;gap:16px;flex-wrap:wrap;}
+.color-item{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.color-item label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a70a0;}
+.color-swatch{width:52px;height:52px;border-radius:12px;border:2px solid #e0d8e8;cursor:pointer;overflow:hidden;position:relative;}
+.color-swatch input[type=color]{position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);border:none;cursor:pointer;opacity:1;}
+
+/* Social links */
+.social-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fafafa;border-radius:12px;border:1px solid #e8e0f0;margin-bottom:10px;transition:border-color .2s;}
+.social-row:hover{border-color:#c0b0d8;}
+.social-icon-sel{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.social-row input{flex:1;border:none;background:none;font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;color:var(--dk);}
+.social-row input::placeholder{color:#b0a0c0;}
+.social-remove{background:none;border:none;color:#ccc;cursor:pointer;font-size:1rem;padding:4px;transition:color .2s;}
+.social-remove:hover{color:var(--rd);}
+.add-social-btn{width:100%;background:none;border:2px dashed #ddd;border-radius:12px;padding:11px;color:#8a70a0;font-weight:600;font-size:.85rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.add-social-btn:hover{border-color:var(--mg);color:var(--mg);}
+
+/* Collections */
+.coll-create-row{display:flex;gap:12px;align-items:flex-end;margin-bottom:20px;}
+.coll-create-row .af{flex:1;margin:0;}
+.coll-create-btn{background:linear-gradient(135deg,var(--mg),var(--or));color:#fff;border:none;padding:11px 22px;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
+.coll-create-btn:hover{opacity:.88;}
+.coll-list{display:flex;flex-direction:column;gap:10px;}
+.coll-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fafafa;border-radius:12px;border:1px solid #e8e0f0;transition:border-color .2s;}
+.coll-item:hover{border-color:#c0b0d8;}
+.coll-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;}
+.coll-item-name{flex:1;font-weight:600;font-size:.9rem;}
+.coll-item-count{font-size:.75rem;color:#8a70a0;white-space:nowrap;}
+.coll-item-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:.9rem;transition:color .2s;padding:4px;}
+.coll-item-del:hover{color:var(--rd);}
+.coll-color-pick{width:28px;height:28px;border-radius:8px;border:none;cursor:pointer;overflow:hidden;position:relative;flex-shrink:0;}
+.coll-color-pick input{position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);cursor:pointer;}
+
+/* Catalogue tab */
+.adm-cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
+.cat-filter-row{display:flex;gap:8px;flex-wrap:wrap;}
+.cat-ftag{padding:6px 16px;border-radius:999px;font-size:.78rem;font-weight:600;border:2px solid #e0d8e8;background:#fff;color:#5a4060;cursor:pointer;transition:all .2s;}
+.cat-ftag.active{background:var(--mg);color:#fff;border-color:var(--mg);}
+.cat-ftag:hover:not(.active){border-color:var(--mg);color:var(--mg);}
+
+/* Add design form */
+.adm-design-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:700px){.adm-design-grid{grid-template-columns:1fr;}}
+.adm-designs-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:24px;}
+.adm-dc{background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e8e0f0;position:relative;transition:box-shadow .2s;}
+.adm-dc:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);}
+.adm-dc img,.adm-dc-ph{width:100%;aspect-ratio:3/4;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#ffe0ed,#fff0fb);}
+.adm-dc-info{padding:10px 12px 14px;}
+.adm-dc-name{font-weight:700;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.adm-dc-price{font-size:.78rem;color:var(--mg);font-weight:600;}
+.adm-dc-tag{font-size:.68rem;color:#8a70a0;margin-top:2px;}
+.adm-dc-btns{position:absolute;top:8px;right:8px;display:flex;gap:5px;}
+.adm-dc-btn{width:28px;height:28px;border-radius:50%;border:none;cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2);}
+.adm-dc-edit{background:var(--or);color:#fff;}
+.adm-dc-del{background:var(--rd);color:#fff;}
+.adm-no-designs{text-align:center;padding:40px;color:#8a70a0;font-size:.9rem;background:#fafafa;border-radius:12px;grid-column:1/-1;}
+
+/* Edit design modal */
+.ed-modal{display:none;position:fixed;inset:0;background:rgba(26,14,46,.8);z-index:700;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.ed-modal.open{display:flex;}
+.ed-box{background:#fff;border-radius:22px;padding:36px;width:460px;max-height:88vh;overflow-y:auto;animation:popIn .3s ease;}
+.ed-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:22px;}
+.ed-actions{display:flex;gap:12px;margin-top:8px;}
+.ed-save{flex:1;background:linear-gradient(135deg,var(--tl),var(--sk));color:#fff;border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;}
+.ed-cancel{flex:1;background:#f0e8f8;color:var(--dk);border:none;padding:12px;border-radius:12px;font-weight:700;cursor:pointer;}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--dk);color:#fff;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.85rem;z-index:800;transition:transform .4s ease;display:flex;align-items:center;gap:9px;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:var(--gn);}
+
+/* Admin mode indicator */
+.adm-mode-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--dk);color:var(--yw);padding:9px 48px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;align-items:center;justify-content:space-between;}
+.adm-mode-bar.on{display:flex;}
+.amb-dot{width:7px;height:7px;border-radius:50%;background:var(--gn);animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.amb-exit{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:5px 14px;border-radius:999px;cursor:pointer;font-size:.73rem;font-weight:600;}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s;}
+.rv.on{opacity:1;transform:translateY(0);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:960px){
+  nav{padding:13px 20px;}
+  .nav-links{display:none;}
+  .sec{padding:68px 20px;}
+  .sv-grid,.tc-grid{grid-template-columns:1fr;}
+  .ps-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .ps-grid::before{display:none;}
+  .bk-wrap{grid-template-columns:1fr;gap:36px;}
+  .fg-row{grid-template-columns:1fr;}
+  footer{padding:44px 22px 30px;}
+  .ft-top{flex-direction:column;}
+  .adm-sidebar{width:200px;}
+  .adm-tab{padding:20px;}
+}
+@media(max-width:640px){
+  .adm-overlay{flex-direction:column;}
+  .adm-sidebar{width:100%;height:auto;}
+  .adm-nav{flex-direction:row;overflow-x:auto;padding:8px;}
+  .adm-nav-item span:not(.ni){display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ PASSWORD MODAL ══ -->
+<div class="pw-modal" id="pwModal">
+  <div class="pw-box">
+    <div class="pw-icon">🔐</div>
+    <h3 class="pw-title">Admin Access</h3>
+    <p class="pw-sub">Enter your password to manage your website</p>
+    <input class="pw-inp" id="pwInput" type="password" placeholder="••••••••" maxlength="30">
+    <div class="pw-err" id="pwErr">Incorrect password. Try again.</div>
+    <button class="pw-btn" onclick="checkPw()">Open Dashboard →</button>
+    <button class="pw-cancel" onclick="closePwModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- ══ EDIT DESIGN MODAL ══ -->
+<div class="ed-modal" id="edModal">
+  <div class="ed-box">
+    <div class="ed-title">✏️ Edit Design</div>
+    <div class="af"><label>Change Photo</label>
+      <div class="uz" onclick="document.getElementById('edFile').click()" style="padding:18px;">
+        <input type="file" id="edFile" accept="image/*" style="display:none" onchange="handleEdPhoto(this)">
+        <div class="uz-txt">Click to swap photo</div>
+      </div>
+      <img class="uz-preview" id="edPhotoPreview">
+    </div>
+    <div class="af"><label>Name *</label><input id="edName" type="text"></div>
+    <div class="af-row">
+      <div class="af"><label>Category</label>
+        <select id="edCat">
+          <option>Leteisi Set</option><option>Bubu Set</option><option>Party Wear</option>
+          <option>Bridal</option><option>Matric/Grad</option><option>Wedding Guest</option>
+          <option>Ankara Set</option><option>Traditional</option><option>Custom</option>
+        </select>
+      </div>
+      <div class="af"><label>Price *</label><input id="edPrice" type="text"></div>
+    </div>
+    <div class="af"><label>Collection</label><select id="edColl"></select></div>
+    <div class="ed-actions">
+      <button class="ed-save" onclick="saveEdit()">Save Changes ✓</button>
+      <button class="ed-cancel" onclick="closeEdit()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
+
+<!-- ══════════════════════════════════════
+     PUBLIC WEBSITE
+══════════════════════════════════════ -->
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo-wrap" href="#">
+    <img id="navLogoImg" src="" alt="Logo">
+    <div id="navLogoText"><span class="s1">Gee</span><span class="s2">Gee</span> Designs</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalogue">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#booking">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <a class="nav-book-btn" href="#booking">Book a Fitting ✨</a>
+    <button class="nav-admin-btn" onclick="openAdminLogin()">⚙️ Admin</button>
+  </div>
+</nav>
+
+<!-- SOCIAL BAR -->
+<div id="socialBar"></div>
+
+<!-- HERO -->
+<section class="hero" id="home" style="margin-top:0;padding-top:130px;">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="hero-badge">🇧🇼 Tlokweng, Botswana · Est. 2020</div>
+  <img id="heroLogoImg" src="" alt="Gee Gee Logo">
+  <h1 class="ht">Designed<br><span class="l2">just for</span><br><span class="l3">you.</span></h1>
+  <p class="hd">Custom Leteisi sets, bubu dress sets, bridal gowns &amp; party wear — stitched with love in Tlokweng. Because every woman deserves to feel <em>extraordinary</em>.</p>
+  <div class="hero-acts">
+    <a class="btn-m" href="#booking">Book a Fitting 📅</a>
+    <a class="btn-g" href="#catalogue">See Designs →</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="sn" data-target="500">500+</div><div class="sl">Happy Clients</div></div>
+    <div><div class="sn">5★</div><div class="sl">TikTok Reviews</div></div>
+    <div><div class="sn">BW·SA</div><div class="sl">We Deliver</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-in">
+    <span class="mi">Leteisi Dresses <span></span></span><span class="mi">Bubu Sets <span></span></span>
+    <span class="mi">Custom Fit <span></span></span><span class="mi">Bridal Gowns <span></span></span>
+    <span class="mi">Tlokweng 🇧🇼 <span></span></span><span class="mi">Party Wear <span></span></span>
+    <span class="mi">Traditional Attire <span></span></span><span class="mi">Matric Dresses <span></span></span>
+    <span class="mi">Leteisi Dresses <span></span></span><span class="mi">Bubu Sets <span></span></span>
+    <span class="mi">Custom Fit <span></span></span><span class="mi">Bridal Gowns <span></span></span>
+    <span class="mi">Tlokweng 🇧🇼 <span></span></span><span class="mi">Party Wear <span></span></span>
+    <span class="mi">Traditional Attire <span></span></span><span class="mi">Matric Dresses <span></span></span>
+  </div>
+</div>
+
+<!-- CATALOGUE -->
+<section class="sec" id="catalogue">
+  <div class="cat-header">
+    <div>
+      <div class="ey" style="color:var(--brand-primary)">From Gee Gee's Studio</div>
+      <h2 class="st">Her <em>signature</em> designs</h2>
+      <p class="cat-desc">Every piece is made-to-measure. Browse by collection below.</p>
+    </div>
+    <div id="pubAddBtn" style="display:none;">
+      <button onclick="openAdminDash('catalogue')" style="background:linear-gradient(135deg,var(--brand-primary),var(--brand-secondary));color:#fff;border:none;padding:12px 26px;border-radius:999px;font-weight:700;font-size:.85rem;cursor:pointer;box-shadow:0 6px 20px rgba(224,65,122,.28);">+ Add Design</button>
+    </div>
+  </div>
+  <!-- Filter tabs -->
+  <div class="coll-tabs" id="pubCollTabs"></div>
+  <!-- Gallery groups -->
+  <div id="pubGallery"></div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="ey" style="color:var(--tl)">What Gee Gee offers</div>
+  <h2 class="st">Services for every <em>occasion</em></h2>
+  <div class="sv-grid">
+    <div class="sv-card svc1 rv"><span class="sv-em">👗</span><div class="sv-n">01</div><h3 class="sv-t">Custom Dress Design</h3><p class="sv-d">Bring a photo, a sketch or just a feeling. Gee Gee brings it to life in your exact measurements.</p><div class="sv-p">From P280 fix &amp; supply</div></div>
+    <div class="sv-card svc2 rv"><span class="sv-em">🪡</span><div class="sv-n">02</div><h3 class="sv-t">Leteisi &amp; Bubu Sets</h3><p class="sv-d">Authentic Leteisi fabric in vibrant prints. Bubu dress sets in white (P480) and colour (P450).</p><div class="sv-p" style="color:#b08000">From P450</div></div>
+    <div class="sv-card svc3 rv"><span class="sv-em">💍</span><div class="sv-n">03</div><h3 class="sv-t">Bridal &amp; Wedding</h3><p class="sv-d">Wedding gowns, bridesmaid dresses, lobola attire, and traditional Tswana wedding sets.</p><div class="sv-p" style="color:var(--tl)">From P1,200</div></div>
+    <div class="sv-card svc4 rv"><span class="sv-em">🎓</span><div class="sv-n">04</div><h3 class="sv-t">Matric &amp; Graduation</h3><p class="sv-d">Stand out at your matric dance or graduation. Gowns, jumpsuits, two-pieces — all custom.</p><div class="sv-p" style="color:var(--in)">From P600</div></div>
+    <div class="sv-card svc5 rv"><span class="sv-em">✂️</span><div class="sv-n">05</div><h3 class="sv-t">Fix &amp; Supply</h3><p class="sv-d">Got your own fabric? Gee Gee cuts, sews and finishes to perfection with fast turnaround.</p><div class="sv-p" style="color:var(--or)">From P280</div></div>
+    <div class="sv-card svc6 rv"><span class="sv-em">📦</span><div class="sv-n">06</div><h3 class="sv-t">Nationwide Delivery</h3><p class="sv-d">Clients from Goodhope, Francistown and beyond. We deliver across Botswana and to South Africa.</p><div class="sv-p" style="color:var(--sk)">Ask about delivery</div></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process" style="background:var(--dk);color:#fff;">
+  <div class="ey" style="color:var(--yw)"><span style="width:24px;height:3px;background:var(--yw);border-radius:2px;display:block;"></span>How it works</div>
+  <h2 class="st" style="color:#fff">From idea to <em style="color:var(--yw)">masterpiece</em></h2>
+  <div class="ps-grid">
+    <div class="ps rv"><div class="ps-c pc1">💬</div><div class="ps-num">STEP 01</div><h3 class="ps-t">WhatsApp Gee Gee</h3><p class="ps-d">Send her your idea, inspiration photos, or just describe your dream outfit.</p></div>
+    <div class="ps rv"><div class="ps-c pc2">📏</div><div class="ps-num">STEP 02</div><h3 class="ps-t">Measurements &amp; Fabric</h3><p class="ps-d">Visit the studio or send your measurements. Choose from a wide range of fabrics.</p></div>
+    <div class="ps rv"><div class="ps-c pc3">🧵</div><div class="ps-num">STEP 03</div><h3 class="ps-t">She Creates</h3><p class="ps-d">Every stitch made with care. Get updates as your piece comes to life.</p></div>
+    <div class="ps rv"><div class="ps-c pc4">✨</div><div class="ps-num">STEP 04</div><h3 class="ps-t">Collect &amp; Glow</h3><p class="ps-d">Pick up from Tlokweng or receive delivery. Try it on, fall in love, walk out glowing.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials">
+  <div class="ey" style="color:var(--or)">What clients say</div>
+  <h2 class="st">Real women, <em>real results</em></h2>
+  <div class="tc-grid">
+    <div class="tc tc1 rv"><div class="tc-stars">★★★★★</div><p class="tc-txt">"I showed her one TikTok video and she recreated it perfectly. I have never felt so beautiful in my life!"</p><div class="tc-auth"><div class="ta-av av1">TM</div><div><div class="ta-nm">Tebogo M.</div><div class="ta-lc">📍 Gaborone</div></div></div></div>
+    <div class="tc tc2 rv"><div class="tc-stars">★★★★★</div><p class="tc-txt">"Traveled all the way from Goodhope specifically for Gee Gee. Worth every kilometer. The dress fitted like heaven!"</p><div class="tc-auth"><div class="ta-av av2">NB</div><div><div class="ta-nm">Neo B.</div><div class="ta-lc">📍 Goodhope</div></div></div></div>
+    <div class="tc tc3 rv"><div class="tc-stars">★★★★★</div><p class="tc-txt">"She made my matric dress and everyone was asking who made it. My night was absolutely unforgettable!"</p><div class="tc-auth"><div class="ta-av av3">KD</div><div><div class="ta-nm">Kefilwe D.</div><div class="ta-lc">📍 Tlokweng</div></div></div></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec" id="booking">
+  <div class="bk-wrap">
+    <div>
+      <div class="ey" style="color:var(--in)">Book a fitting</div>
+      <h2 class="st">Ready to wear <em>your story?</em></h2>
+      <p class="bk-desc">Send a booking request and Gee Gee will confirm on WhatsApp within 24 hours.</p>
+      <div class="cc-list">
+        <div class="cc"><div class="cc-ic ci1">📍</div><div class="cc-tx"><span>Location</span><a>Tlokweng, Greater Gaborone, Botswana</a></div></div>
+        <div class="cc" style="border-color:var(--tl)"><div class="cc-ic ci2">📱</div><div class="cc-tx"><span>WhatsApp / Call</span><a href="https://wa.me/26777831302" target="_blank">+267 77 831 302</a></div></div>
+        <div class="cc" style="border-color:var(--yw)"><div class="cc-ic ci3">🕐</div><div class="cc-tx"><span>Hours</span><a>Mon – Sat: 8am – 6pm</a></div></div>
+      </div>
+      <div class="tt-promo"><span style="font-size:2rem">🎵</span><div><strong>See the magic on TikTok</strong><p>Watch Gee Gee create in real time — <a href="https://www.tiktok.com/@geegee50" target="_blank">@geegee50</a></p></div></div>
+    </div>
+    <div class="bk-form rv">
+      <div class="bk-ft">📋 Send a Booking Request</div>
+      <form onsubmit="submitBooking(event)">
+        <div class="fg-row">
+          <div class="fg"><label>Full Name</label><input type="text" required placeholder="Your full name"></div>
+          <div class="fg"><label>WhatsApp Number</label><input type="tel" required placeholder="+267 00 000 000"></div>
+        </div>
+        <div class="fg"><label>Service Needed</label>
+          <select required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Custom Dress Design</option><option>Leteisi / Bubu Set</option>
+            <option>Bridal / Wedding Attire</option><option>Matric / Graduation Dress</option>
+            <option>Fix &amp; Supply (my own fabric)</option><option>Traditional Attire</option>
+            <option>Alterations &amp; Repairs</option><option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="fg-row">
+          <div class="fg"><label>Preferred Date</label><input type="date"></div>
+          <div class="fg"><label>Budget (BWP)</label><input type="text" placeholder="e.g. 500 – 1000"></div>
+        </div>
+        <div class="fg"><label>Describe your dream outfit</label><textarea placeholder="Tell Gee Gee about the occasion, style, colours…"></textarea></div>
+        <button class="sbtn" type="submit">Send Booking Request 🌟</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-logo-wrap">
+      <img id="footerLogoImg" src="" alt="Logo">
+      <div id="footerLogoTxt"><span class="s1">Gee</span><span class="s2">Gee</span> Designs</div>
+    </div>
+    <div class="ft-lnks"><a href="#catalogue">Portfolio</a><a href="#services">Services</a><a href="#process">Process</a><a href="#booking">Book Now</a></div>
+    <div class="ft-soc" id="footerSocial"></div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-cp">© 2025 Gee Gee Designs · Tlokweng, Botswana 🇧🇼</div>
+    <div class="ft-tg">Made with love, one stitch at a time.</div>
+  </div>
+</footer>
+
+<!-- ADMIN MODE BAR -->
+<div class="adm-mode-bar" id="admModeBar">
+  <div style="display:flex;align-items:center;gap:10px;"><span class="amb-dot"></span> Admin Mode Active</div>
+  <button class="amb-exit" onclick="exitAdmin()">Exit Admin</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     ADMIN DASHBOARD
+══════════════════════════════════════ -->
+<div class="adm-overlay" id="admOverlay">
+
+  <!-- Sidebar -->
+  <div class="adm-sidebar">
+    <div class="adm-brand">
+      <div class="adm-brand-name">⚙️ Dashboard</div>
+      <div class="adm-brand-sub">Gee Gee Designs</div>
+    </div>
+    <div class="adm-nav">
+      <button class="adm-nav-item active" onclick="switchTab('branding',this)"><span class="ni">🎨</span> <span>Branding</span></button>
+      <button class="adm-nav-item" onclick="switchTab('social',this)"><span class="ni">🔗</span> <span>Social Links</span></button>
+      <button class="adm-nav-item" onclick="switchTab('collections',this)"><span class="ni">🗂️</span> <span>Collections</span></button>
+      <button class="adm-nav-item" onclick="switchTab('catalogue',this)"><span class="ni">👗</span> <span>Catalogue</span><span class="nb" id="designBadge"></span></button>
+      <button class="adm-nav-item" onclick="switchTab('security',this)"><span class="ni">🔑</span> <span>Security</span></button>
+    </div>
+    <div class="adm-footer">
+      <button class="adm-exit-btn" onclick="exitAdmin()">← Back to Website</button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="adm-main">
+
+    <!-- ── BRANDING TAB ── -->
+    <div class="adm-tab active" id="tab-branding">
+      <div class="adm-topbar">
+        <div><div class="adm-topbar-title">🎨 Branding</div><div class="adm-topbar-sub">Logo, name & brand colours</div></div>
+        <button class="adm-save-btn" onclick="saveBranding()">💾 Save Branding</button>
+      </div>
+      <div style="padding:28px;">
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">🖼️</span> Logo</div>
+          <div class="af-row">
+            <div class="af">
+              <label>Upload Logo Image</label>
+              <div class="uz" id="logoUz">
+                <input type="file" id="logoFile" accept="image/*" onchange="handleLogoUpload(this)">
+                <div class="uz-icon">📸</div>
+                <div class="uz-txt"><strong>Click to upload</strong><br>PNG, JPG, SVG</div>
+              </div>
+              <img class="uz-preview" id="logoPreview">
+            </div>
+            <div>
+              <div class="af"><label>Business Name (Line 1)</label><input id="brandName1" type="text" placeholder="Gee" value="Gee"></div>
+              <div class="af"><label>Business Name (Line 2)</label><input id="brandName2" type="text" placeholder="Gee Designs" value="Gee Designs"></div>
+              <div class="af"><label>Tagline / Sub-heading</label><input id="brandTagline" type="text" placeholder="Custom Fashion · Tlokweng"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">🎨</span> Brand Colours</div>
+          <p style="font-size:.85rem;color:#8a70a0;margin-bottom:20px;">These colours are applied across the whole website — buttons, accents, headings.</p>
+          <div class="color-row">
+            <div class="color-item">
+              <label>Primary</label>
+              <div class="color-swatch"><input type="color" id="c-primary" value="#E0417A" oninput="previewColor('primary',this.value)"></div>
+              <span style="font-size:.65rem;color:#8a70a0;" id="c-primary-val">#E0417A</span>
+            </div>
+            <div class="color-item">
+              <label>Secondary</label>
+              <div class="color-swatch"><input type="color" id="c-secondary" value="#F4832A" oninput="previewColor('secondary',this.value)"></div>
+              <span style="font-size:.65rem;color:#8a70a0;" id="c-secondary-val">#F4832A</span>
+            </div>
+            <div class="color-item">
+              <label>Accent</label>
+              <div class="color-swatch"><input type="color" id="c-accent" value="#F9C932" oninput="previewColor('accent',this.value)"></div>
+              <span style="font-size:.65rem;color:#8a70a0;" id="c-accent-val">#F9C932</span>
+            </div>
+          </div>
+          <div style="margin-top:20px;padding:16px;background:#fafafa;border-radius:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div style="font-size:.8rem;color:#5a4060;font-weight:600;">Preview:</div>
+            <div id="colorPreviewBtn" style="background:var(--brand-primary);color:#fff;padding:8px 20px;border-radius:999px;font-size:.82rem;font-weight:700;">Book Now</div>
+            <div id="colorPreviewTag" style="background:var(--brand-accent);color:var(--dk);padding:5px 14px;border-radius:999px;font-size:.78rem;font-weight:700;">Leteisi Set</div>
+            <div id="colorPreviewPrice" style="color:var(--brand-primary);font-weight:800;font-size:1.1rem;">P480</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SOCIAL LINKS TAB ── -->
+    <div class="adm-tab" id="tab-social">
+      <div class="adm-topbar">
+        <div><div class="adm-topbar-title">🔗 Social Media Links</div><div class="adm-topbar-sub">Shown in the nav bar and footer</div></div>
+        <button class="adm-save-btn" onclick="saveSocial()">💾 Save Links</button>
+      </div>
+      <div style="padding:28px;">
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">📱</span> Your Social Profiles</div>
+          <p style="font-size:.85rem;color:#8a70a0;margin-bottom:20px;">Add your social media links. They'll appear in the top bar and footer of your website.</p>
+          <div id="socialList"></div>
+          <button class="add-social-btn" onclick="addSocialRow()">＋ Add Social Platform</button>
+        </div>
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">📞</span> Contact Info</div>
+          <div class="af"><label>WhatsApp Number</label><input id="contactWa" type="tel" placeholder="+267 77 831 302" value="+267 77 831 302"></div>
+          <div class="af"><label>Business Address</label><input id="contactAddr" type="text" placeholder="Tlokweng, Greater Gaborone" value="Tlokweng, Greater Gaborone, Botswana"></div>
+          <div class="af"><label>Business Hours</label><input id="contactHours" type="text" placeholder="Mon – Sat: 8am – 6pm" value="Mon – Sat: 8am – 6pm"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COLLECTIONS TAB ── -->
+    <div class="adm-tab" id="tab-collections">
+      <div class="adm-topbar">
+        <div><div class="adm-topbar-title">🗂️ Collections</div><div class="adm-topbar-sub">Label and organise your gallery into groups</div></div>
+      </div>
+      <div style="padding:28px;">
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">➕</span> Create New Collection</div>
+          <div class="af-row3">
+            <div class="af" style="grid-column:1/3;"><label>Collection Name *</label><input id="newCollName" type="text" placeholder="e.g. Wedding Season 2025, Bubu Collection, Matric Looks…"></div>
+            <div class="af"><label>Label Colour</label>
+              <div class="color-swatch" style="width:100%;height:42px;border-radius:10px;"><input type="color" id="newCollColor" value="#E0417A"></div>
+            </div>
+          </div>
+          <div class="af"><label>Description (optional)</label><textarea id="newCollDesc" placeholder="Describe this collection — occasion, theme, style…"></textarea></div>
+          <button class="coll-create-btn" onclick="createCollection()" style="width:100%;margin-top:4px;">✨ Create Collection</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">📋</span> Your Collections <span style="font-size:.8rem;color:#8a70a0;font-weight:400;" id="collCountLabel"></span></div>
+          <div class="coll-list" id="admCollList">
+            <div style="text-align:center;padding:32px;color:#8a70a0;font-size:.88rem;" id="noCollMsg">No collections yet. Create your first one above!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CATALOGUE TAB ── -->
+    <div class="adm-tab" id="tab-catalogue">
+      <div class="adm-topbar">
+        <div><div class="adm-topbar-title">👗 Catalogue</div><div class="adm-topbar-sub">Add, edit and manage your designs</div></div>
+      </div>
+      <div style="padding:28px;">
+
+        <!-- Add new design -->
+        <div class="adm-card">
+          <div class="adm-card-title"><span class="ct-icon">➕</span> Add New Design</div>
+          <div class="adm-design-grid">
+            <div>
+              <div class="af"><label>Photo *</label>
+                <div class="uz" id="newDesignUz">
+                  <input type="file" id="newDesignFile" accept="image/*" onchange="handleDesignPhoto(this)">
+                  <div class="uz-icon">📸</div>
+                  <div class="uz-txt"><strong>Click or drag & drop</strong><br>Any size • JPG, PNG, WEBP</div>
+                </div>
+                <img class="uz-preview" id="newDesignPreview">
+              </div>
+            </div>
+            <div>
+              <div class="af"><label>Design Name *</label><input id="newDesignName" type="text" placeholder="e.g. Teal Leteisi Bubu Set"></div>
+              <div class="af-row">
+                <div class="af"><label>Category</label>
+                  <select id="newDesignCat">
+                    <option>Leteisi Set</option><option>Bubu Set</option><option>Party Wear</option>
+                    <option>Bridal</option><option>Matric/Grad</option><option>Wedding Guest</option>
+                    <option>Ankara Set</option><option>Traditional</option><option>Custom</option>
+                  </select>
+                </div>
+                <div class="af"><label>Price *</label><input id="newDesignPrice" type="text" placeholder="e.g. From P480"></div>
+              </div>
+              <div class="af"><label>Add to Collection</label><select id="newDesignColl"><option value="">— Uncategorised —</option></select></div>
+              <div class="af"><label>Description (optional)</label><input id="newDesignDesc" type="text" placeholder="Brief description…"></div>
+              <button class="coll-create-btn" style="width:100%;margin-top:4px;" onclick="addDesign()">✨ Add to Catalogue</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter by collection -->
+        <div class="adm-card">
+          <div class="adm-card-title" style="margin-bottom:14px;padding-bottom:12px;"><span class="ct-icon">📋</span> All Designs <span style="font-size:.8rem;color:#8a70a0;font-weight:400;" id="designsCountLabel"></span></div>
+          <div class="cat-filter-row" id="admCatFilter"></div>
+          <div class="adm-designs-list" id="admDesignsList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECURITY TAB ── -->
+    <div class="adm-tab" id="tab-security">
+      <div class="adm-topbar">
+        <div><div class="adm-topbar-title">🔑 Security</div><div class="adm-topbar-sub">Change your admin password</div></div>
+      </div>
+      <div style="padding:28px;">
+        <div class="adm-card" style="max-width:420px;">
+          <div class="adm-card-title"><span class="ct-icon">🔐</span> Change Password</div>
+          <div class="af"><label>Current Password</label><input id="curPw" type="password" placeholder="Your current password"></div>
+          <div class="af"><label>New Password</label><input id="newPwA" type="password" placeholder="At least 4 characters"></div>
+          <div class="af"><label>Confirm New Password</label><input id="newPwB" type="password" placeholder="Repeat new password"></div>
+          <button class="coll-create-btn" style="width:100%;margin-top:4px;background:linear-gradient(135deg,var(--in),var(--sk));" onclick="changePw()">Update Password</button>
+        </div>
+        <div class="adm-card" style="max-width:420px;">
+          <div class="adm-card-title"><span class="ct-icon">ℹ️</span> Default Credentials</div>
+          <p style="font-size:.88rem;color:#5a4060;line-height:1.7;">Default password is <strong style="color:var(--mg);">geegee2025</strong>. Please change it to something private after your first login.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════ -->
+<script>
+// ═══ STORAGE KEYS ═══
+const K = { designs:'gg_designs_v3', colls:'gg_colls_v3', brand:'gg_brand_v3', social:'gg_social_v3', pw:'gg_pw_v3' };
+const DEFAULT_PW = 'geegee2025';
+
+// ═══ STATE ═══
+let designs = [], collections = [], brandSettings = {}, socialLinks = [], isAdmin = false;
+let editingDesignId = null, newDesignPhotoData = null, editPhotoData = null, logoPhotoData = null;
+let activeCatFilter = 'all', activePublicFilter = 'all';
+
+// ═══ LOAD / SAVE ═══
+function load() {
+  try { designs = JSON.parse(localStorage.getItem(K.designs)) || []; } catch(e) { designs = []; }
+  try { collections = JSON.parse(localStorage.getItem(K.colls)) || []; } catch(e) { collections = []; }
+  try { brandSettings = JSON.parse(localStorage.getItem(K.brand)) || {}; } catch(e) { brandSettings = {}; }
+  try { socialLinks = JSON.parse(localStorage.getItem(K.social)) || getDefaultSocial(); } catch(e) { socialLinks = getDefaultSocial(); }
+}
+function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+function getDefaultSocial() {
+  return [
+    { id:'tt', platform:'TikTok', url:'https://www.tiktok.com/@geegee50', icon:'🎵', color:'#ff0050' },
+    { id:'wa', platform:'WhatsApp', url:'https://wa.me/26777831302', icon:'💬', color:'#25d366' }
+  ];
+}
+function getPw() { return localStorage.getItem(K.pw) || DEFAULT_PW; }
+
+// ═══ APPLY BRAND SETTINGS ═══
+function applyBrand() {
+  const b = brandSettings;
+  // Colours
+  if(b.primary) { document.documentElement.style.setProperty('--brand-primary', b.primary); document.getElementById('c-primary').value = b.primary; document.getElementById('c-primary-val').textContent = b.primary; }
+  if(b.secondary) { document.documentElement.style.setProperty('--brand-secondary', b.secondary); document.getElementById('c-secondary').value = b.secondary; document.getElementById('c-secondary-val').textContent = b.secondary; }
+  if(b.accent) { document.documentElement.style.setProperty('--brand-accent', b.accent); document.getElementById('c-accent').value = b.accent; document.getElementById('c-accent-val').textContent = b.accent; }
+  // Logo
+  if(b.logo) {
+    ['navLogoImg','heroLogoImg','footerLogoImg'].forEach(id => { const el=document.getElementById(id); if(el){el.src=b.logo;el.style.display='block';} });
+    document.getElementById('logoPreview').src = b.logo;
+    document.getElementById('logoPreview').style.display = 'block';
+    logoPhotoData = b.logo;
+  }
+  // Name
+  if(b.name1) document.getElementById('brandName1').value = b.name1;
+  if(b.name2) document.getElementById('brandName2').value = b.name2;
+  if(b.tagline) document.getElementById('brandTagline').value = b.tagline;
+  // Update nav text
+  updateNavText();
+}
+
+function updateNavText() {
+  const n1 = document.getElementById('brandName1').value || 'Gee';
+  const n2 = document.getElementById('brandName2').value || 'Gee Designs';
+  document.getElementById('navLogoText').innerHTML = `<span class="s1">${n1}</span><span class="s2">${n2}</span>`;
+  document.getElementById('footerLogoTxt').innerHTML = `<span class="s1">${n1}</span><span class="s2">${n2}</span>`;
+}
+
+function previewColor(which, val) {
+  document.documentElement.style.setProperty(`--brand-${which}`, val);
+  document.getElementById(`c-${which}-val`).textContent = val;
+}
+
+// ═══ APPLY SOCIAL ═══
+function applySocial() {
+  const bar = document.getElementById('socialBar');
+  const footerSoc = document.getElementById('footerSocial');
+  if(socialLinks.length === 0) { bar.classList.add('hidden'); footerSoc.innerHTML=''; return; }
+  bar.classList.remove('hidden');
+  bar.innerHTML = socialLinks.map(s=>`<a href="${s.url}" target="_blank" style="color:rgba(255,255,255,.6);"><span class="si">${s.icon}</span> ${s.platform}</a>`).join('');
+  footerSoc.innerHTML = socialLinks.map(s=>`<a class="fsb" href="${s.url}" target="_blank" style="background:${s.color};" title="${s.platform}">${s.icon}</a>`).join('');
+}
+
+// ═══ ADMIN NAV ═══
+function switchTab(name, btn) {
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.adm-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`tab-${name}`).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(name==='catalogue') { renderAdmDesigns(); renderAdmCatFilter(); populateCollDropdowns(); }
+  if(name==='collections') { renderAdmColls(); }
+  if(name==='social') { renderSocialList(); }
+}
+
+// ═══ LOGIN ═══
+function openAdminLogin() { document.getElementById('pwModal').classList.add('open'); setTimeout(()=>document.getElementById('pwInput').focus(),100); }
+function closePwModal() { document.getElementById('pwModal').classList.remove('open'); document.getElementById('pwInput').value=''; document.getElementById('pwErr').style.display='none'; document.getElementById('pwInput').classList.remove('wrong'); }
+function checkPw() {
+  if(document.getElementById('pwInput').value === getPw()) { closePwModal(); enterAdmin(); }
+  else { const i=document.getElementById('pwInput'); i.classList.add('wrong'); document.getElementById('pwErr').style.display='block'; setTimeout(()=>i.classList.remove('wrong'),500); }
+}
+document.getElementById('pwInput').addEventListener('keydown',e=>{if(e.key==='Enter')checkPw();});
+function enterAdmin() {
+  isAdmin=true; document.body.classList.add('admin-mode');
+  document.getElementById('admModeBar').classList.add('on');
+  document.getElementById('pubAddBtn').style.display='block';
+  openAdminDash('branding');
+  toast('👋 Welcome back, Gee Gee!');
+}
+function openAdminDash(tab) {
+  document.getElementById('admOverlay').classList.add('open');
+  const btn = document.querySelector(`.adm-nav-item[onclick*="${tab}"]`);
+  switchTab(tab, btn);
+}
+function closeAdmDash() { document.getElementById('admOverlay').classList.remove('open'); }
+function exitAdmin() {
+  isAdmin=false; document.body.classList.remove('admin-mode');
+  document.getElementById('admModeBar').classList.remove('on');
+  document.getElementById('pubAddBtn').style.display='none';
+  closeAdmDash(); toast('👋 Exited admin mode');
+}
+
+// ═══ SAVE BRANDING ═══
+function saveBranding() {
+  brandSettings.primary = document.getElementById('c-primary').value;
+  brandSettings.secondary = document.getElementById('c-secondary').value;
+  brandSettings.accent = document.getElementById('c-accent').value;
+  brandSettings.name1 = document.getElementById('brandName1').value;
+  brandSettings.name2 = document.getElementById('brandName2').value;
+  brandSettings.tagline = document.getElementById('brandTagline').value;
+  if(logoPhotoData) brandSettings.logo = logoPhotoData;
+  save(K.brand, brandSettings);
+  applyBrand();
+  toast('✅ Branding saved!');
+}
+
+// ═══ LOGO UPLOAD ═══
+function handleLogoUpload(input) {
+  const f = input.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    logoPhotoData = e.target.result;
+    const p = document.getElementById('logoPreview'); p.src=logoPhotoData; p.style.display='block';
+    ['navLogoImg','heroLogoImg','footerLogoImg'].forEach(id=>{const el=document.getElementById(id);if(el){el.src=logoPhotoData;el.style.display='block';}});
+  };
+  r.readAsDataURL(f);
+}
+
+// ═══ SOCIAL LINKS ═══
+const PLATFORMS = {
+  TikTok:   {icon:'🎵',color:'#ff0050'},
+  WhatsApp: {icon:'💬',color:'#25d366'},
+  Instagram:{icon:'📸',color:'#e1306c'},
+  Facebook: {icon:'📘',color:'#1877f2'},
+  Twitter:  {icon:'🐦',color:'#1da1f2'},
+  YouTube:  {icon:'▶️',color:'#ff0000'},
+  LinkedIn: {icon:'💼',color:'#0a66c2'},
+  Website:  {icon:'🌐',color:'#4f3fc0'},
+  Other:    {icon:'🔗',color:'#8a70a0'},
+};
+function renderSocialList() {
+  const list = document.getElementById('socialList');
+  list.innerHTML = socialLinks.map((s,i)=>`
+    <div class="social-row" data-idx="${i}">
+      <div class="social-icon-sel" style="background:${s.color}20;font-size:1.3rem;">${s.icon}</div>
+      <select onchange="updateSocialPlatform(${i},this.value)" style="border:none;background:none;font-weight:600;font-size:.85rem;color:var(--dk);outline:none;cursor:pointer;width:110px;flex-shrink:0;">
+        ${Object.keys(PLATFORMS).map(p=>`<option value="${p}" ${s.platform===p?'selected':''}>${p}</option>`).join('')}
+      </select>
+      <input value="${s.url}" placeholder="Paste your link here…" oninput="updateSocialUrl(${i},this.value)">
+      <button class="social-remove" onclick="removeSocial(${i})">✕</button>
+    </div>
+  `).join('');
+}
+function addSocialRow() {
+  socialLinks.push({id:Date.now().toString(),platform:'Instagram',url:'',icon:'📸',color:'#e1306c'});
+  renderSocialList();
+}
+function updateSocialPlatform(i, val) {
+  const p = PLATFORMS[val];
+  socialLinks[i].platform = val; socialLinks[i].icon = p.icon; socialLinks[i].color = p.color;
+  renderSocialList();
+}
+function updateSocialUrl(i, val) { socialLinks[i].url = val; }
+function removeSocial(i) { socialLinks.splice(i,1); renderSocialList(); }
+function saveSocial() { save(K.social, socialLinks); applySocial(); toast('✅ Social links saved!'); }
+
+// ═══ COLLECTIONS ═══
+function createCollection() {
+  const name = document.getElementById('newCollName').value.trim();
+  if(!name) { toast('⚠️ Enter a collection name'); return; }
+  const color = document.getElementById('newCollColor').value;
+  const desc = document.getElementById('newCollDesc').value.trim();
+  collections.push({ id:Date.now().toString(), name, color, desc, createdAt:new Date().toISOString() });
+  save(K.colls, collections);
+  document.getElementById('newCollName').value='';
+  document.getElementById('newCollDesc').value='';
+  renderAdmColls(); populateCollDropdowns(); renderPublicGallery();
+  toast('✅ Collection created!');
+}
+function deleteCollection(id) {
+  if(!confirm('Delete this collection? Designs in it will become Uncategorised.')) return;
+  collections = collections.filter(c=>c.id!==id);
+  designs.forEach(d=>{ if(d.collectionId===id) d.collectionId=''; });
+  save(K.colls,collections); save(K.designs,designs);
+  renderAdmColls(); renderAdmDesigns(); renderPublicGallery();
+  populateCollDropdowns();
+  toast('🗑️ Collection deleted');
+}
+function renderAdmColls() {
+  const list = document.getElementById('admCollList');
+  const label = document.getElementById('collCountLabel');
+  label.textContent = `(${collections.length})`;
+  if(collections.length===0) { list.innerHTML='<div style="text-align:center;padding:32px;color:#8a70a0;font-size:.88rem;">No collections yet. Create your first one above!</div>'; return; }
+  list.innerHTML = collections.map(c=>{
+    const count = designs.filter(d=>d.collectionId===c.id).length;
+    return `<div class="coll-item">
+      <div class="coll-dot" style="background:${c.color};"></div>
+      <div class="coll-item-name">${c.name}</div>
+      ${c.desc?`<div style="font-size:.75rem;color:#8a70a0;max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.desc}</div>`:''}
+      <div class="coll-item-count">${count} design${count!==1?'s':''}</div>
+      <button class="coll-item-del" onclick="deleteCollection('${c.id}')">🗑️</button>
+    </div>`;
+  }).join('');
+}
+function populateCollDropdowns() {
+  const opts = `<option value="">— Uncategorised —</option>${collections.map(c=>`<option value="${c.id}">${c.name}</option>`).join('')}`;
+  ['newDesignColl','edColl'].forEach(id=>{ const el=document.getElementById(id); if(el) el.innerHTML=opts; });
+}
+
+// ═══ DESIGN PHOTO ═══
+function handleDesignPhoto(input) {
+  const f=input.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    newDesignPhotoData=e.target.result;
+    const p=document.getElementById('newDesignPreview');p.src=newDesignPhotoData;p.style.display='block';
+    document.getElementById('newDesignUz').style.borderColor='var(--tl)';
+    document.getElementById('newDesignUz').style.background='#e0fbf5';
+  };
+  r.readAsDataURL(f);
+}
+function handleEdPhoto(input) {
+  const f=input.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=e=>{editPhotoData=e.target.result;const p=document.getElementById('edPhotoPreview');p.src=editPhotoData;p.style.display='block';};
+  r.readAsDataURL(f);
+}
+
+// Drag & drop
+const duz = document.getElementById('newDesignUz');
+duz.addEventListener('dragover',e=>{e.preventDefault();duz.classList.add('drag');});
+duz.addEventListener('dragleave',()=>duz.classList.remove('drag'));
+duz.addEventListener('drop',e=>{
+  e.preventDefault();duz.classList.remove('drag');
+  const f=e.dataTransfer.files[0];
+  if(f&&f.type.startsWith('image/')){const inp=document.getElementById('newDesignFile');const dt=new DataTransfer();dt.items.add(f);inp.files=dt.files;handleDesignPhoto(inp);}
+});
+
+// ═══ ADD DESIGN ═══
+function addDesign() {
+  const name=document.getElementById('newDesignName').value.trim();
+  const price=document.getElementById('newDesignPrice').value.trim();
+  if(!name){toast('⚠️ Enter a design name');return;}
+  if(!price){toast('⚠️ Enter a price');return;}
+  const d = {
+    id:Date.now().toString(),name,price,
+    category:document.getElementById('newDesignCat').value,
+    collectionId:document.getElementById('newDesignColl').value,
+    description:document.getElementById('newDesignDesc').value.trim(),
+    photo:newDesignPhotoData||null,
+    createdAt:new Date().toISOString()
+  };
+  designs.unshift(d); save(K.designs,designs);
+  // Reset
+  document.getElementById('newDesignName').value='';
+  document.getElementById('newDesignPrice').value='';
+  document.getElementById('newDesignDesc').value='';
+  document.getElementById('newDesignPreview').style.display='none';
+  document.getElementById('newDesignUz').style.borderColor='#ddd';
+  document.getElementById('newDesignUz').style.background='#fafafa';
+  document.getElementById('newDesignFile').value='';
+  newDesignPhotoData=null;
+  renderAdmDesigns(); renderPublicGallery(); updateDesignBadge();
+  toast('✅ Design added!');
+}
+
+// ═══ ADMIN DESIGNS LIST ═══
+function renderAdmDesigns() {
+  const list=document.getElementById('admDesignsList');
+  const label=document.getElementById('designsCountLabel');
+  const filtered=activeCatFilter==='all'?designs:designs.filter(d=>d.collectionId===activeCatFilter);
+  label.textContent=`(${designs.length} total)`;
+  if(filtered.length===0){list.innerHTML='<div class="adm-no-designs">No designs yet. Add your first one above! 📸</div>';return;}
+  list.innerHTML=filtered.map(d=>`
+    <div class="adm-dc">
+      ${d.photo?`<img src="${d.photo}" alt="${d.name}">`:`<div class="adm-dc-ph">👗</div>`}
+      <div class="adm-dc-info">
+        <div class="adm-dc-name">${d.name}</div>
+        <div class="adm-dc-price">${d.price}</div>
+        <div class="adm-dc-tag">${d.category}${d.collectionId?` · ${getCollName(d.collectionId)}`:''}</div>
+      </div>
+      <div class="adm-dc-btns">
+        <button class="adm-dc-btn adm-dc-edit" onclick="openEdit('${d.id}')">✏️</button>
+        <button class="adm-dc-btn adm-dc-del" onclick="deleteDesign('${d.id}')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderAdmCatFilter() {
+  const el=document.getElementById('admCatFilter');
+  el.innerHTML=`<button class="cat-ftag ${activeCatFilter==='all'?'active':''}" onclick="filterAdmCat('all',this)">All (${designs.length})</button>`
+    +collections.map(c=>{const cnt=designs.filter(d=>d.collectionId===c.id).length;return`<button class="cat-ftag ${activeCatFilter===c.id?'active':''}" onclick="filterAdmCat('${c.id}',this)"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c.color};margin-right:5px;"></span>${c.name} (${cnt})</button>`;}).join('');
+}
+function filterAdmCat(id,btn) {
+  activeCatFilter=id;
+  document.querySelectorAll('#admCatFilter .cat-ftag').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdmDesigns();
+}
+
+function getCollName(id) { const c=collections.find(x=>x.id===id); return c?c.name:''; }
+function updateDesignBadge() {
+  const b=document.getElementById('designBadge');
+  if(designs.length>0){b.textContent=designs.length;b.classList.add('show');}else{b.classList.remove('show');}
+}
+
+// ═══ EDIT / DELETE ═══
+function openEdit(id) {
+  const d=designs.find(x=>x.id===id); if(!d) return;
+  editingDesignId=id; editPhotoData=null;
+  document.getElementById('edName').value=d.name;
+  document.getElementById('edPrice').value=d.price;
+  document.getElementById('edCat').value=d.category;
+  populateCollDropdowns();
+  document.getElementById('edColl').value=d.collectionId||'';
+  const p=document.getElementById('edPhotoPreview');
+  if(d.photo){p.src=d.photo;p.style.display='block';}else{p.style.display='none';}
+  document.getElementById('edFile').value='';
+  document.getElementById('edModal').classList.add('open');
+}
+function closeEdit() { document.getElementById('edModal').classList.remove('open'); editingDesignId=null; editPhotoData=null; }
+function saveEdit() {
+  const d=designs.find(x=>x.id===editingDesignId); if(!d) return;
+  d.name=document.getElementById('edName').value.trim()||d.name;
+  d.price=document.getElementById('edPrice').value.trim()||d.price;
+  d.category=document.getElementById('edCat').value;
+  d.collectionId=document.getElementById('edColl').value;
+  if(editPhotoData) d.photo=editPhotoData;
+  save(K.designs,designs); renderAdmDesigns(); renderPublicGallery(); renderAdmColls(); renderAdmCatFilter(); closeEdit();
+  toast('✅ Design updated!');
+}
+function deleteDesign(id) {
+  if(!confirm('Delete this design?')) return;
+  designs=designs.filter(d=>d.id!==id); save(K.designs,designs);
+  renderAdmDesigns(); renderPublicGallery(); renderAdmColls(); renderAdmCatFilter(); updateDesignBadge();
+  toast('🗑️ Design deleted');
+}
+
+// ═══ PUBLIC GALLERY ═══
+function renderPublicGallery() {
+  // Tabs
+  const tabs = document.getElementById('pubCollTabs');
+  tabs.innerHTML=`<button class="coll-tab ${activePublicFilter==='all'?'active':''}" onclick="filterPublic('all',this)">All Designs (${designs.length})</button>`
+    +collections.map(c=>{
+      const cnt=designs.filter(d=>d.collectionId===c.id).length;
+      if(cnt===0)return'';
+      return`<button class="coll-tab ${activePublicFilter===c.id?'active':''}" onclick="filterPublic('${c.id}',this)" style="${activePublicFilter===c.id?`background:${c.color};border-color:${c.color};`:`border-color:${c.color}80;color:${c.color};`}">${c.name} (${cnt})</button>`;
+    }).join('')
+    +(designs.filter(d=>!d.collectionId).length>0?`<button class="coll-tab ${activePublicFilter==='uncategorised'?'active':''}" onclick="filterPublic('uncategorised',this)">Other (${designs.filter(d=>!d.collectionId).length})</button>`:``);
+
+  const gallery = document.getElementById('pubGallery');
+  gallery.innerHTML='';
+
+  if(designs.length===0){
+    gallery.innerHTML=`<div class="empty-state"><div class="ei">👗</div><h3>No designs yet</h3><p>Click ⚙️ Admin to add your first design!</p></div>`;
+    return;
+  }
+
+  // Which groups to show
+  let groupsToShow = [];
+  if(activePublicFilter==='all') {
+    collections.forEach(c=>{
+      const grpDesigns=designs.filter(d=>d.collectionId===c.id);
+      if(grpDesigns.length>0) groupsToShow.push({coll:c,items:grpDesigns});
+    });
+    const uncat=designs.filter(d=>!d.collectionId);
+    if(uncat.length>0) groupsToShow.push({coll:{id:'uncat',name:'More Designs',color:'#8a70a0',desc:''},items:uncat});
+    if(groupsToShow.length===0) groupsToShow.push({coll:{id:'all',name:'All Designs',color:'var(--brand-primary)',desc:''},items:designs});
+  } else if(activePublicFilter==='uncategorised') {
+    const uncat=designs.filter(d=>!d.collectionId);
+    groupsToShow.push({coll:{id:'uncat',name:'Other Designs',color:'#8a70a0',desc:''},items:uncat});
+  } else {
+    const c=collections.find(x=>x.id===activePublicFilter);
+    const items=designs.filter(d=>d.collectionId===activePublicFilter);
+    if(c&&items.length>0) groupsToShow.push({coll:c,items});
+  }
+
+  groupsToShow.forEach(({coll,items})=>{
+    const section=document.createElement('div');
+    section.className='coll-group';
+    section.innerHTML=`
+      <div class="coll-group-header">
+        <span class="coll-group-badge" style="background:${coll.color}18;color:${coll.color};border:1.5px solid ${coll.color}40;">
+          <span style="width:9px;height:9px;border-radius:50%;background:${coll.color};display:inline-block;"></span>
+          ${coll.name}
+        </span>
+        ${coll.desc?`<span class="coll-group-desc">${coll.desc}</span>`:''}
+        <div class="coll-group-line"></div>
+        <span style="font-size:.75rem;color:#8a70a0;white-space:nowrap;">${items.length} design${items.length!==1?'s':''}</span>
+      </div>
+      <div class="port-grid" id="grp-${coll.id}"></div>
+    `;
+    gallery.appendChild(section);
+    const grid=document.getElementById(`grp-${coll.id}`);
+    items.forEach(d=>{
+      const tagBg=getCatColor(d.category);
+      const card=document.createElement('div');
+      card.className='dcard';
+      card.dataset.id=d.id;
+      card.innerHTML=`
+        ${d.photo?`<img class="dcard-img" src="${d.photo}" alt="${d.name}" loading="lazy">`:`<div class="dcard-ph">👗</div>`}
+        <div class="dcard-body">
+          <span class="dcard-tag" style="${tagBg}">${d.category}</span>
+          <div class="dcard-name">${d.name}</div>
+          <div class="dcard-price">${d.price}</div>
+        </div>
+        <div class="dcard-ov"><div class="dcard-ov-cta">Enquire on WhatsApp →</div></div>
+        <div class="dcard-adm">
+          <button class="dab dab-edit" onclick="openEdit('${d.id}');event.stopPropagation();">✏️</button>
+          <button class="dab dab-del" onclick="deleteDesign('${d.id}');event.stopPropagation();">🗑️</button>
+        </div>
+      `;
+      card.addEventListener('click',()=>{
+        if(!isAdmin) window.open(`https://wa.me/26777831302?text=Hi Gee Gee! 👋 I'm interested in: ${d.name} (${d.price})`, '_blank');
+      });
+      grid.appendChild(card);
+    });
+  });
+}
+function filterPublic(id, btn) {
+  activePublicFilter=id;
+  document.querySelectorAll('.coll-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPublicGallery();
+}
+function getCatColor(cat) {
+  const m={'Leteisi Set':'background:#e0fbf5;color:#0d8c72','Bubu Set':'background:#e0fbf5;color:#0d8c72',
+    'Party Wear':'background:#fff0fb;color:#b02057','Bridal':'background:#eef0ff;color:#3a2dc0',
+    'Matric/Grad':'background:#fff8e0;color:#b08000','Wedding Guest':'background:#eef0ff;color:#3a2dc0',
+    'Ankara Set':'background:#e8fff4;color:#0a6e55','Traditional':'background:#fff3e8;color:#8b3a00','Custom':'background:#f0f0ff;color:#4f3fc0'};
+  return m[cat]||'background:#f5f0ff;color:#5a4060';
+}
+
+// ═══ SECURITY ═══
+function changePw() {
+  const cur=document.getElementById('curPw').value, na=document.getElementById('newPwA').value, nb=document.getElementById('newPwB').value;
+  if(cur!==getPw()){toast('⚠️ Current password is wrong');return;}
+  if(!na||na.length<4){toast('⚠️ New password must be at least 4 characters');return;}
+  if(na!==nb){toast('⚠️ Passwords do not match');return;}
+  localStorage.setItem(K.pw,na);
+  document.getElementById('curPw').value='';document.getElementById('newPwA').value='';document.getElementById('newPwB').value='';
+  toast('🔑 Password changed!');
+}
+
+// ═══ BOOKING ═══
+function submitBooking(e) { e.preventDefault(); toast('🎉 Booking sent! Gee Gee will WhatsApp you soon.'); e.target.reset(); }
+
+// ═══ TOAST ═══
+let toastTimer;
+function toast(msg) {
+  clearTimeout(toastTimer);
+  document.getElementById('toastMsg').textContent=msg;
+  document.getElementById('toast').classList.add('show');
+  toastTimer=setTimeout(()=>document.getElementById('toast').classList.remove('show'),3200);
+}
+
+// ═══ SCROLL REVEAL ═══
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ═══ INIT ═══
+load();
+applyBrand();
+applySocial();
+renderPublicGallery();
+updateDesignBadge();
+populateCollDropdowns();
+</script>
+</body>
+</html>
